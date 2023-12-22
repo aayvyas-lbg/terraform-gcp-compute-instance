@@ -1,0 +1,25 @@
+---
+driver:
+  name: terraform
+  parallelism: 4
+
+provisioner:
+  name: terraform
+
+transport:
+  name: terraform
+  root_module_directory: test/fixtures/
+
+verifier:
+  name: terraform
+  systems:
+    - name: default
+      backend: local
+      controls:
+        - default
+
+platforms:
+  - name: terraform
+
+suites:
+  - name: default

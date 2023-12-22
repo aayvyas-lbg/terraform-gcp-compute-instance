@@ -43,7 +43,7 @@ resource "google_compute_instance" "compute_instance" {
 
   zone = "us-central1-a"
 
-  metadata_startup_script = file("./bootstrap.sh") # TODO: Write integration test to validate the bootstrap script logic works as expected
+  metadata_startup_script = fileexists("./bootstrap.sh") ? file("./bootstrap.sh") : null # TODO: Write integration test to validate the bootstrap script logic works as expected
 
   labels = local.labels
   tags   = local.tags[var.app_type] # TODO: Write unit test case to validate the tags are properly assigned
