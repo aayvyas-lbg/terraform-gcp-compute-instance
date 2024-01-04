@@ -27,7 +27,7 @@ pipeline {
         stage("Integration Tests"){
             when { expression {params.INTEGRATION_TESTS == true } }
             steps{
-                sh "terraform test -filter=tests/integration.tftest.hcl"
+                sh "terraform test -filter=tests/integration-tests.tftest.hcl"
             }   
         }
     }
