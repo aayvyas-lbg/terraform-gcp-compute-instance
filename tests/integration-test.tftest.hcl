@@ -26,14 +26,11 @@ provider "google" {
 }
 run "create_instance" {
   command = apply
+  variables {
+    network = run.setup_network.network_name
+  }
   assert {
     condition     = google_compute_instance.compute_instance.name != null
     error_message = "name of the instance is null"
   }
-}
-
-
-# use data block to get the http response
-run "startup script works" {
-
 }
