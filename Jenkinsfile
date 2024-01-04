@@ -6,7 +6,7 @@ pipeline {
         stage("Test") {
             steps {
                 script{
-                    println("Hello World!")
+                    sh "terraform init"
                 }
             }
         }
