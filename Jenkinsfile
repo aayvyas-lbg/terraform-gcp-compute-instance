@@ -17,7 +17,7 @@ pipeline {
             }
         }
         stage("Unit Tests"){
-            when { params.UNIT_TESTS == true}
+            when { expression {params.UNIT_TESTS == true } }
             steps { 
                 script {
                     sh "terraform test -filter=tests/unit-tests.tftest.hcl"
@@ -25,7 +25,7 @@ pipeline {
             }
         }
         stage("Integration Tests"){
-            when { params.INTEGRATION_TESTS == true }
+            when { expression {params.INTEGRATION_TESTS == true } }
             steps{
                 sh "terraform test -filter=tests/integration.tftest.hcl"
             }   
